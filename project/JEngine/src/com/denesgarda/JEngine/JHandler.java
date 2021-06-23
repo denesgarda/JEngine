@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * JHandler is what refreshes graphics, ticks the game, and manages assets like objects and entities of a JGame
  */
 public abstract class JHandler {
-    LinkedList<JAsset> assets = new LinkedList<>();
+    public LinkedList<JAsset> ASSETS = new LinkedList<>();
 
     public JHandler() {
 
@@ -19,7 +19,7 @@ public abstract class JHandler {
      * Ticks all assets in the JGame
      */
     public void tick() {
-        for(JAsset asset : assets) {
+        for(JAsset asset : ASSETS) {
             asset.tick();
         }
     }
@@ -29,7 +29,7 @@ public abstract class JHandler {
      * @param graphics The graphics the assets use to render
      */
     public void render(Graphics graphics) {
-        for(JAsset asset : assets) {
+        for(JAsset asset : ASSETS) {
             asset.render(graphics);
         }
     }
@@ -39,7 +39,7 @@ public abstract class JHandler {
      * @param asset The asset you want to add
      */
     public void addAsset(JAsset asset) {
-        this.assets.add(asset);
+        this.ASSETS.add(asset);
     }
 
     /**
@@ -47,6 +47,6 @@ public abstract class JHandler {
      * @param asset The asset you want to remove
      */
     public void removeAsset(JAsset asset) {
-        this.assets.remove(asset);
+        this.ASSETS.remove(asset);
     }
 }
