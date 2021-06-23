@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="JEngine:jar">
-    <output-path>$PROJECT_DIR$/../../buidls</output-path>
+    <output-path>$PROJECT_DIR$/../../builds</output-path>
     <root id="archive" name="JEngine.jar">
       <element id="module-output" name="JEngine" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/20.1.0/annotations-20.1.0.jar" path-in-jar="/" />
