@@ -1,7 +1,7 @@
 # JEngine
 A High-Efficiency Game Engine for Java
 ## Getting Started
-Download the latest version from [here](./builds/JEngine_1.2.jar), and add it to your project's dependencies.
+Download the latest version from [here](./builds/JEngine_1.4.jar), and add it to your project's dependencies.
 ## Usage
 ### Initializing
 For example, I will be using the class called ``Game.java`` as my main class. In your main class, you have to extend JGame and implement methods.
@@ -82,7 +82,7 @@ public class Handler extends JHandler {
 ```
 I will also add an instance of my handler in ``Game.java``.
 ```java
-public static Handler HANDLER = new Handler();
+private Handler handler = new Handler();
 ```
 ### Configuring
 You can configure the fps and tps to whatever you like. By default, the fps is set to 60, and the tps is set to 20. It is not recommended to set the tps very high.
@@ -114,7 +114,7 @@ public void onSecondPassed(SecondPassedEvent event) {
 
 @EventHandler
 public void onTick(TickEvent event) {
-    HANDLER.tick();
+    handler.tick();
 }
 
 @EventHandler
@@ -126,7 +126,7 @@ public void onFrame(FrameEvent event) {
     }
     Graphics g = bs.getDrawGraphics();
 
-    HANDLER.render(g);
+    handler.render(g);
 
     g.dispose();
     bs.show();
@@ -155,5 +155,5 @@ public class Player extends JEntity {
 In the constructor of ``Game.java``, we can add a player to the game.
 ```java
 Player player = new Player(64, 64);
-HANDLER.addAsset(player);
+handler.addAsset(player);
 ```
