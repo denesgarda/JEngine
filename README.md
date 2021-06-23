@@ -105,7 +105,7 @@ public void onSecondPassed(SecondPassedEvent event) { // This fires every second
 }
 ```
 We can also listen for each tick and each frame, then use the according method in our handler.
-```
+```java
 @EventHandler
 public void onSecondPassed(SecondPassedEvent event) {
     System.out.println("FPS: " + this.getFPS() + " / " + this.getPreferredFPS());
