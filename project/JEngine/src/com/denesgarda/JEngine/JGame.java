@@ -9,6 +9,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * JGame is the core class of JEngine. It has everything needed to run a game.
+ */
 public abstract class JGame implements Runnable {
     private final JFrame frame;
     private final Canvas canvas;
@@ -25,41 +28,101 @@ public abstract class JGame implements Runnable {
         this.canvas = canvas();
     }
 
+    /**
+     * Sets the desired JFrame for the game
+     * @return The JFrame that you want the game to use
+     */
     public abstract @NotNull JFrame frame();
+
+    /**
+     * Sets the desired Canvas for the JFrame
+     * @return The Canvas that you want the JFrame to use
+     */
     public abstract @NotNull Canvas canvas();
 
+    /**
+     * Gets the JFrame of the game
+     * @return The JFrame of the game
+     */
     public JFrame getFrame() {
         return this.frame;
     }
+
+    /**
+     * Gets the Canvas of the JFrame
+     * @return The Canvas of the JFrame
+     */
     public Canvas getCanvas() {
         return this.canvas;
     }
+
+    /**
+     * Tells if the game is running or not
+     * @return The state of the game
+     */
     public boolean isRunning() {
         return running;
     }
+
+    /**
+     * Gets the preferred fps of the game. By default, it is 60
+     * @return The preferred fps of the game.
+     */
     public int getPreferredFPS() {
         return preferredFPS;
     }
+
+    /**
+     * Sets the preferred fps of the game to run at. The game will try to match this value using a game loop algorithm that may be less accurate the higher the number is
+     * @param preferredFPS The fps you want to game to run at
+     */
     public void setPreferredFPS(int preferredFPS) {
         this.preferredFPS = preferredFPS;
     }
+
+    /**
+     * Gets the preferred tps of the game. By default, it is 20
+     * @return THe preferred tps of the game
+     */
     public int getPreferredTPS() {
         return preferredTPS;
     }
+
+    /**
+     * Sets the preferred tps of the game to run at. The game will try to match this value using a game loop algorithm that may be less accurate the higher the number is
+     * @param preferredTPS The tps you want to game to run at
+     */
     public void setPreferredTPS(int preferredTPS) {
         this.preferredTPS = preferredTPS;
     }
+
+    /**
+     * Gets the fps the game is currently running at. This value updates every second
+     * @return The fps the game is currently running at.
+     */
     public int getFPS() {
         return FPS;
     }
+
+    /**
+     * Gets the tps the game is currently running at. This value updates every second
+     * @return The tps the game is currently running at.
+     */
     public int getTPS() {
         return TPS;
     }
 
+    /**
+     * Sets the event listener of the JGame. The event lister class is used to listen for certain events called by the Game to render, tick, etc.
+     * @param object The class you want to set as the event listener class
+     */
     public void setEventListener(Object object) {
         eventListener = object;
     }
 
+    /**
+     * Starts the game
+     */
     public synchronized void start() {
         frame.add(canvas);
         frame.setVisible(true);
@@ -69,6 +132,10 @@ public abstract class JGame implements Runnable {
             running = true;
         }
     }
+
+    /**
+     * Stops the game, but doesn't exit.
+     */
     public synchronized void stop() {
         if(running) {
             try {
@@ -82,6 +149,9 @@ public abstract class JGame implements Runnable {
         }
     }
 
+    /**
+     * Is the high-efficiency game loop algorithm that tries to match all preset settings.
+     */
     @Override
     public final void run() {
         long sleepTimeMillis = 1;
