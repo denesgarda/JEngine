@@ -1,7 +1,7 @@
 # JEngine
 A High-Efficiency Game Engine for Java
 ## Getting Started
-Download the latest version from [here](./builds/JEngine_1.0.jar), and add it to your project's dependencies.
+Download the latest version from [here](./builds/JEngine_1.2.jar), and add it to your project's dependencies.
 ## Usage
 ### Initializing
 For example, I will be using the class called ``Game.java`` as my main class. In your main class, you have to extend JGame and implement methods.
