@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 /**
  * JGame is the core class of JEngine. It has everything needed to run a game.
@@ -223,5 +224,37 @@ public abstract class JGame implements Runnable {
             }
             difference = System.nanoTime() - currentNanoTime;
         }
+    }
+
+    /**
+     * This method generates Graphics to be used within the handler
+     * @return A record this the Graphics and the BufferedStrategy
+     */
+    public BufferedGraphics generateGraphics() {
+        BufferStrategy bs = this.getCanvas().getBufferStrategy();
+        if(bs == null) {
+            this.getCanvas().createBufferStrategy(3);
+            bs = this.getCanvas().getBufferStrategy();
+        }
+        return new BufferedGraphics(bs.getDrawGraphics(), bs);
+    }
+
+    /**
+     * This method draws out graphics
+     * @param graphics The Graphics to be drawn
+     * @param bs The BufferedStrategy to by used
+     */
+    public void useGraphics(Graphics graphics, BufferStrategy bs) {
+        graphics.dispose();
+        bs.show();
+    }
+
+    /**
+     * This method draws out graphics
+     * @param bufferedGraphics A record with the Graphics to be drawn and the BufferedStrategy to by used
+     */
+    public void useGraphics(BufferedGraphics bufferedGraphics) {
+        bufferedGraphics.graphics().dispose();
+        bufferedGraphics.bufferStrategy().show();
     }
 }
