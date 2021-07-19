@@ -1,7 +1,7 @@
 # JEngine
 A High-Efficiency Game Engine for Java
 ## Getting Started
-Download the latest version from [here](./builds/JEngine_1.4.jar), and add it to your project's dependencies.
+Download the latest version from [here](./builds/JEngine_1.5.jar), and add it to your project's dependencies.
 ## Usage
 ### Initializing
 For example, I will be using the class called ``Game.java`` as my main class. In your main class, you have to extend JGame and implement methods.
@@ -119,17 +119,11 @@ public void onTick(TickEvent event) {
 
 @EventHandler
 public void onFrame(FrameEvent event) {
-    BufferStrategy bs = this.getCanvas().getBufferStrategy();
-    if(bs == null) {
-        this.getCanvas().createBufferStrategy(3);
-        return;
-    }
-    Graphics g = bs.getDrawGraphics();
+    BufferedGraphics bufferedGraphics = this.generateGraphics();
 
-    handler.render(g);
+    handler.render(bufferedGraphics.graphics());
 
-    g.dispose();
-    bs.show();
+    this.useGraphics(bufferedGraphics);
 }
 ```
 ### Assets
