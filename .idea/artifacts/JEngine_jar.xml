@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JEngine:jar">
+    <output-path>$PROJECT_DIR$/builds</output-path>
+    <root id="archive" name="JEngine.jar">
+      <element id="module-output" name="JEngine" />
+    </root>
+  </artifact>
+</component>
