@@ -1,7 +1,5 @@
 package com.denesgarda.JEngine;
 
-import testing.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
